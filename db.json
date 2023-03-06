@@ -1,0 +1,52 @@
+{
+  "0": {
+    "expression": "a not b or c nand",
+    "inputs": 3,
+    "difficulty": 1,
+    "result": [
+      [true],
+      [false],
+      [true],
+      [false],
+      [true],
+      [true],
+      [true],
+      [false]
+    ],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
+  },
+  "1": {
+    "expression": "a b or c not nand",
+    "inputs": 3,
+    "difficulty": 1,
+    "result": [
+      [true],
+      [true],
+      [false],
+      [true],
+      [false],
+      [true],
+      [false],
+      [true]
+    ],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
+  }
+}
