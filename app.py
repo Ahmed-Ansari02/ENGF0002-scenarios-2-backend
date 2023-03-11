@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import json
 
 operators = ["AND", "OR", "NAND", "NOT"]
 app = Flask(__name__)
-
+CORS(app)
 
 def gen_truthtable(n):
     if n < 1:
@@ -76,9 +77,10 @@ def home():
     return jsonify({"message": "Hello :)"})
 
 
-@app.get("/calculate")
+@app.post("/calculate")
 def calculate_truth_table():
     data = request.get_json()
+    print(data)
     expression = data["expression"]
     number_of_inputs = data["inputs"]
     result = calc_circuit_table(gen_truthtable(int(number_of_inputs)), expression)
