@@ -48,5 +48,92 @@
       [1, 1, 0],
       [1, 1, 1]
     ]
+  },
+  "2": {
+    "expression": "A B NAND C NOT AND ",
+    "inputs": 3,
+    "result": [
+      [true],
+      [false],
+      [true],
+      [false],
+      [true],
+      [false],
+      [false],
+      [false]
+    ],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
+  },
+  "3": {
+    "expression": "A B NAND C NOT NAND ",
+    "inputs": 3,
+    "result": [
+      [false],
+      [true],
+      [false],
+      [true],
+      [false],
+      [true],
+      [true],
+      [true]
+    ],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
+  },
+  "4": {
+    "expression": "A B NAND C NOT AND ",
+    "inputs": 3,
+    "result": [
+      [true],
+      [false],
+      [true],
+      [false],
+      [true],
+      [false],
+      [false],
+      [false]
+    ],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
+  },
+  "5": {
+    "expression": "A B NAND C NOT OR ",
+    "inputs": 3,
+    "result": [[true], [true], [true], [true], [true], [true], [true], [false]],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
   }
 }

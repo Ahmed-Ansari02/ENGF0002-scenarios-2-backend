@@ -6,6 +6,7 @@ operators = ["AND", "OR", "NAND", "NOT"]
 app = Flask(__name__)
 CORS(app)
 
+
 def gen_truthtable(n):
     if n < 1:
         return [[]]
@@ -57,6 +58,11 @@ def calc_circuit_table(table, expression):
     return result
 
 
+def check_empty(string):
+    if string == "":
+        return True
+
+
 def write_to_file(data):
     file = open("./db.json", "r")
     json_file = json.load(file)
@@ -82,6 +88,8 @@ def calculate_truth_table():
     data = request.get_json()
     print(data)
     expression = data["expression"]
+    if check_empty(expression):
+        return jsonify({"message": "Empty expression!"})
     number_of_inputs = data["inputs"]
     result = calc_circuit_table(gen_truthtable(int(number_of_inputs)), expression)
     return jsonify(
@@ -93,12 +101,14 @@ def calculate_truth_table():
 def save():
     data = request.get_json()
     expression = data["expression"]
+    if check_empty(expression):
+        return jsonify({"message": "Empty expression!", "status": "failed"})
     number_of_inputs = data["inputs"]
     result = calc_circuit_table(gen_truthtable(int(number_of_inputs)), expression)
     data["result"] = result
     data["truth_table"] = gen_truthtable(int(number_of_inputs))
     write_to_file(data)
-    return jsonify({"message": "Saved!"})
+    return jsonify({"message": "Saved!", "status": "success"})
 
 
 @app.get("/get")
