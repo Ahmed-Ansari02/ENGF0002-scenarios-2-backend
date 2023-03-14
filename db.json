@@ -135,5 +135,77 @@
       [1, 1, 0],
       [1, 1, 1]
     ]
+  },
+  "6": {
+    "expression": "A B NAND C NOT NAND ",
+    "inputs": 3,
+    "result": [
+      [false],
+      [true],
+      [false],
+      [true],
+      [false],
+      [true],
+      [true],
+      [true]
+    ],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
+  },
+  "7": {
+    "expression": "A B NAND C NOT NAND ",
+    "inputs": 3,
+    "result": [
+      [false],
+      [true],
+      [false],
+      [true],
+      [false],
+      [true],
+      [true],
+      [true]
+    ],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
+  },
+  "8": {
+    "expression": "A B NAND C NOT NAND ",
+    "inputs": 3,
+    "result": [
+      [false],
+      [true],
+      [false],
+      [true],
+      [false],
+      [true],
+      [true],
+      [true]
+    ],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
   }
 }
