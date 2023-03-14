@@ -8,3 +8,11 @@ modify the data structure used, which is shown in db.json
 
 what should be up to change: 
 due to the new data structure, the algorithm used to calculate should be updated
+
+## version 1.2
+fix the problem of format between front-end and back-end
+
+modify the data structure used, now it comes back to the structure used before version 1.1
+
+what should be up to do:
+merge fromt and back together, do some test of calculate method

@@ -79,7 +79,34 @@ def write_to_file(data):
     with open("./db.json", "w") as f:
         f.write(json.dumps(json_file))
 
+def format_to_front(circuits):
+    keys = circuits.keys()
+    for key in keys:
+        circuit = circuits[key]
+        temp_result = circuit["result"]
+        temp_truth_table = circuit["truth_table"]
+        circuit["truth_table"] = []
+        circuit["result"] = []
+        for i in range(len(temp_result)):
+            circuit["result"].append([temp_result[i]])
+            circuit["truth_table"].append(temp_truth_table[str(i)])
+        circuits[key] = circuit
+    return circuits
 
+def format_to_back(circuits):
+    keys = circuits.keys()
+    new_circuits = []
+    for key in keys:
+        circuit = circuits[key]
+        temp_result = circuit["result"]
+        temp_truth_table = circuit["truth_table"]
+        circuit["truth_table"] = {}
+        circuit["result"] = []
+        for i in range(len(temp_result)):
+            circuit["result"].append(temp_result[i][0])
+            circuit["truth_table"][str(i)] = temp_truth_table[i]
+        new_circuits.append(circuit)
+    return new_circuits
 
 @app.get("/calculate")
 def calculate_truth_table():
@@ -95,6 +122,7 @@ def calculate_truth_table():
 @app.post("/save")
 def save():
     circuits = request.get_json()
+    circuits = format_to_back(circuits)
     id_ignore = []
     for i in range(len(circuits)):
         if db.collection(u'preset_circuits').document(str(circuits[i]["id"])).get().exists:
@@ -112,6 +140,7 @@ def save():
 @app.put("/update")
 def update():
     circuits = request.get_json()
+    circuits = format_to_back(circuits)
     id_not_exist = []
     for i in range(len(circuits)):
         if not db.collection(u'preset_circuits').document(str(circuits[i]["id"])).get().exists:
@@ -129,13 +158,14 @@ def update():
 @app.get("/get")
 def get():
     docs = db.collection(u'preset_circuits').stream()
-    circuits = []
+    circuits = {}
     for doc in docs:
-        circuits.append(doc.to_dict())
+        circuits[str(doc.id)] = doc.to_dict()
+    circuits = format_to_front(circuits)
     if len(circuits) == 0:
         return {'not exist': "No circuits!"}
     else:
-        return jsonify(circuits)
+        return circuits
 
 # get a circuit by one id, if the circuit is not exist, return the id of the circuit
 @app.get("/get/<id>")
@@ -144,10 +174,11 @@ def get_by_id(id):
     if not db.collection(u'preset_circuits').document(str(id)).get().exists:
         id_not_exist = id
     else:
-        circuit = []
-        circuit.append(doc = db.collection(u'preset_circuits').document(str(id)).get().to_dict())
+        circuit = {}
+        circuit[str(db.collection(u'preset_circuits').document(str(id)).get().id)] = db.collection(u'preset_circuits').document(str(id)).get().to_dict()
+        circuit = format_to_front(circuit)
     if id_not_exist is None:
-        return jsonify(circuit)
+        return circuit
     else:
         return {'not exist': id_not_exist}
 
