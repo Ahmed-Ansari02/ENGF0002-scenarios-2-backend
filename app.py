@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import json
+from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -13,6 +14,7 @@ db = firestore.client()
 
 operators = ["AND", "OR", "NAND", "NOT"]
 app = Flask(__name__)
+CORS(app)
 
 
 def gen_truthtable(n):
@@ -108,7 +110,7 @@ def format_to_back(circuits):
         new_circuits.append(circuit)
     return new_circuits
 
-@app.get("/calculate")
+@app.post("/calculate")
 def calculate_truth_table():
     data = request.get_json()
     expression = data["expression"]
@@ -118,7 +120,7 @@ def calculate_truth_table():
         {"truth_table": gen_truthtable(int(number_of_inputs)), "output": result}
     )
 
-# post information about some new cirsuits. If the cirsuir is saved, return the id of the circuit
+# post information about some new circuits. If the cirsuir is saved, return the id of the circuit
 @app.post("/save")
 def save():
     circuits = request.get_json()
