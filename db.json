@@ -1,16 +1,16 @@
 {
   "0": {
-    "expression": "a not b or c nand",
-    "inputs": 3,
     "difficulty": 1,
+    "expression": "A B NAND C NOT AND ",
+    "inputs": 3,
     "result": [
       [true],
       [false],
       [true],
       [false],
       [true],
-      [true],
-      [true],
+      [false],
+      [false],
       [false]
     ],
     "truth_table": [
@@ -25,17 +25,17 @@
     ]
   },
   "1": {
-    "expression": "a b or c not nand",
-    "inputs": 3,
     "difficulty": 1,
+    "expression": "A B NAND C NOT NAND ",
+    "inputs": 3,
     "result": [
-      [true],
-      [true],
       [false],
       [true],
       [false],
       [true],
       [false],
+      [true],
+      [true],
       [true]
     ],
     "truth_table": [
@@ -50,6 +50,7 @@
     ]
   },
   "2": {
+    "difficulty": 2,
     "expression": "A B NAND C NOT AND ",
     "inputs": 3,
     "result": [
@@ -74,6 +75,23 @@
     ]
   },
   "3": {
+    "difficulty": 3,
+    "expression": "A B NAND C NOT OR ",
+    "inputs": 3,
+    "result": [[true], [true], [true], [true], [true], [true], [true], [false]],
+    "truth_table": [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [1, 1, 1]
+    ]
+  },
+  "4": {
+    "difficulty": 1,
     "expression": "A B NAND C NOT NAND ",
     "inputs": 3,
     "result": [
@@ -97,18 +115,19 @@
       [1, 1, 1]
     ]
   },
-  "4": {
-    "expression": "A B NAND C NOT AND ",
+  "5": {
+    "difficulty": 2,
+    "expression": "A B NAND C NOT NAND ",
     "inputs": 3,
     "result": [
-      [true],
       [false],
       [true],
       [false],
       [true],
       [false],
-      [false],
-      [false]
+      [true],
+      [true],
+      [true]
     ],
     "truth_table": [
       [0, 0, 0],
@@ -121,22 +140,8 @@
       [1, 1, 1]
     ]
   },
-  "5": {
-    "expression": "A B NAND C NOT OR ",
-    "inputs": 3,
-    "result": [[true], [true], [true], [true], [true], [true], [true], [false]],
-    "truth_table": [
-      [0, 0, 0],
-      [0, 0, 1],
-      [0, 1, 0],
-      [0, 1, 1],
-      [1, 0, 0],
-      [1, 0, 1],
-      [1, 1, 0],
-      [1, 1, 1]
-    ]
-  },
   "6": {
+    "difficulty": 3,
     "expression": "A B NAND C NOT NAND ",
     "inputs": 3,
     "result": [
@@ -161,17 +166,18 @@
     ]
   },
   "7": {
-    "expression": "A B NAND C NOT NAND ",
+    "difficulty": 1,
+    "expression": "A B OR C NOT AND ",
     "inputs": 3,
     "result": [
       [false],
-      [true],
       [false],
       [true],
       [false],
       [true],
+      [false],
       [true],
-      [true]
+      [false]
     ],
     "truth_table": [
       [0, 0, 0],
@@ -185,18 +191,10 @@
     ]
   },
   "8": {
-    "expression": "A B NAND C NOT NAND ",
+    "difficulty": 2,
+    "expression": "A B NAND C NOT OR ",
     "inputs": 3,
-    "result": [
-      [false],
-      [true],
-      [false],
-      [true],
-      [false],
-      [true],
-      [true],
-      [true]
-    ],
+    "result": [[true], [true], [true], [true], [true], [true], [true], [false]],
     "truth_table": [
       [0, 0, 0],
       [0, 0, 1],
